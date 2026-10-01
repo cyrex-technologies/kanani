@@ -22,10 +22,10 @@ export default function Footer() {
               <div>
                 <p className="text-xl font-bold leading-tight">Email:</p>
                 <Link
-                  href="mailto:info@kananserviceslimited.co.tz"
+                  href="mailto:info@kanan.co.tz"
                   className="mt-2 inline-block text-base text-white/80 transition hover:text-white"
                 >
-                  info@kananserviceslimited.co.tz
+                  info@kanan.co.tz
                 </Link>
               </div>
             </div>

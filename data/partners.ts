@@ -16,13 +16,6 @@ export const partners: Partner[] = [
   },
   {
     id: "2",
-    name: "Kamaka Company Limited",
-    logo: "/images/partners/partners_kamaka.jpg",
-    description: "Trusted supplier of steel products and construction materials with a wide distribution network across Tanzania",
-    category: "supplier",
-  },
-  {
-    id: "3",
     name: "Lodhia Indusries Ltd",
     logo: "/images/partners/lodhia_industries_logo.webp",
     description: "Leading supplier of construction materials including cement, steel, and aggregates with a strong commitment to quality and customer service",
