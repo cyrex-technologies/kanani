@@ -17,8 +17,18 @@ Repository history, tracked branches, application files and accessible assets we
 
 ## Official asset inventory supplied for this work
 
-`/home/brianceasar/Downloads/kanan-products` contains 30 named source files, all explicitly associated by filename with the listed products. Twenty-eight map to the existing 26-product catalogue plus two identifiable roofing products: Wavestyle Roofing Sheets and Mountstyle Roofing Sheets. The remaining product mapping is one image per product. The supplied originals are primarily 1254px-square or approximately 1655×950 PNGs (about 1.9–3.7 MB each); steel Flat Bar and Angle Iron are smaller JPGs.
+`/home/brianceasar/Downloads/kanan-products` contains 28 named source files, all explicitly associated by filename with the listed products. They map to the existing 26-product catalogue plus two identifiable roofing products: Wavestyle Roofing Sheets and Mountstyle Roofing Sheets. The mapping is one image per product. The supplied originals are primarily 1254px-square or approximately 1655×950 PNGs (about 1.9–3.7 MB each); steel Flat Bar and Angle Iron are smaller JPGs.
 
 ## Implementation mapping status
 
-The catalogue data source will be the single mapping between each product, its official source filename and its optimised public asset. Image size measurements, output paths and exceptions will be added after optimisation. No asset identity is inferred beyond the supplied filename.
+`data/products.ts` is the single mapping between each product and its optimised public asset. The retained source-image filenames are the mapping evidence; no asset identity is inferred beyond those filenames.
+
+## Image optimisation result
+
+- Processed: 28 supplied product images.
+- Source total: 71,223,849 bytes (71.22 MB decimal).
+- Optimised WebP total: 5,177,624 bytes (5.18 MB decimal).
+- Reduction: 92.73%.
+- Output: semantic paths under `public/images/products/{cement,scrap,steel,roofing,plastic}`; WebP quality 78, stripped metadata and a maximum 1400px edge.
+- Visual check: a contact sheet covering all 28 output images was inspected. Every image has a direct filename-to-product match.
+- Budget exceptions: five files exceed the preferred 250 KB catalogue-thumbnail budget; all are at or below 369 KB and remain within the 150–350 KB product-detail target except the 369 KB scrap-metal yard image, which was retained for visible detail. Next.js responsive image delivery additionally creates appropriately sized derivatives for rendered thumbnails.

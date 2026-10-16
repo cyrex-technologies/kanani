@@ -12,7 +12,7 @@ export const categories = [
   {
     id: "roofing",
     title: "Roofing Materials",
-    description: "Aluzinki and rangi corrugated sheets plus IT4 and IT5 roofing profiles.",
+    description: "Aluzinki, Rangi, IT4, IT5, Wavestyle and Mountstyle roofing sheets.",
   },
   {
     id: "cement",

@@ -15,7 +15,7 @@ export const productCategoryItems: ProductCategoryItem[] = [
     heroTitle: "Scrap Services",
     description:
       "Heavy melting scrap, cast iron, and scrap metal supply for recycling, foundry, and industrial reuse.",
-    image: "/images/products/scrap/scrap_metal_product.webp",
+    image: "/images/products/scrap/scrap-metal-yard.webp",
   },
   {
     key: "steel",
@@ -23,7 +23,7 @@ export const productCategoryItems: ProductCategoryItem[] = [
     heroTitle: "Steel Supply Services",
     description:
       "Reliable supply of TMT B500 and B300 bars, hollow section, wire rod, black pipes, flat bars, angle iron, HR plates, Z-purlins, and chequered plates.",
-    image: "/images/products/steel/structural_steel.jpeg",
+    image: "/images/products/steel/tmt-b500-steel-bars.webp",
   },
   {
     key: "roofing",
@@ -31,7 +31,7 @@ export const productCategoryItems: ProductCategoryItem[] = [
     heroTitle: "Roofing Supply Services",
     description:
       "Dependable roofing material supply including Aluzinki and rangi corrugated sheets plus IT4 and IT5 profiles.",
-    image: "/images/products/hardware/roofing_material.webp",
+    image: "/images/products/roofing/aluzinki-corrugated-sheets.webp",
   },
   {
     key: "cement",
@@ -39,7 +39,7 @@ export const productCategoryItems: ProductCategoryItem[] = [
     heroTitle: "Cement Supply Services",
     description:
       "Supply of Dangote 42.5N, Dangote 42.5R, and Huaxin cement for construction and infrastructure projects.",
-    image: "/images/products/cement/dangote_cement.webp",
+    image: "/images/products/cement/dangote-42-5n.webp",
   },
   {
     key: "plastic",
@@ -47,6 +47,6 @@ export const productCategoryItems: ProductCategoryItem[] = [
     heroTitle: "Plastic Product Supply",
     description:
       "Plastic product supply including recycled PE and PP pellets, water tanks, and UPVC, HDPE, and PPR pipes.",
-    image: "/images/products/plastic_recycling/plastic_recycling_pp.webp",
+    image: "/images/products/plastic/recycled-pp-pellets.webp",
   },
 ];

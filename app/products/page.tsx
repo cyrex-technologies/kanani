@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,13 +7,18 @@ import Navbar from "@/components/layout/Navbar";
 import { categories } from "@/data/categories";
 import { categoryLabels, isProductCategory, products } from "@/data/products";
 
+export const metadata: Metadata = {
+  title: "Products",
+  description: "Browse Kanan Services Ltd. steel, roofing, cement, scrap and plastic products.",
+  alternates: { canonical: "/products" },
+};
+
 type ProductsPageProps = {
   searchParams: Promise<{ category?: string; q?: string }>;
 };
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
-  const heroImage =
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuA1UOSNBIk4TnSSMwddbR92xfHyfrdnCLBar08u7GuBXN-4prYnH7YUhfpHgQBjLvZS_woZ91ADURqViJPFWHuRp0HBdLM3RyqUCMjMaxMeeuRIzUfJmLkgB9shxL1pnl3A3CkWBj3si9cWUcQIkAZEj7yn9-Sdn3Ry9wSBjbyjTKsw8LGUP3Z0I8tWyvarvo2zFwU2MUFj0ag8IKY628Fl6OtctDqsSCyytof-fxbmelEhqJXTshIwPcNetr7xoXaTfivXLVUU6-GH";
+  const heroImage = "/images/products/steel/tmt-b500-steel-bars.webp";
   const { category: categoryParam, q } = await searchParams;
   const selectedCategory = categoryParam && isProductCategory(categoryParam) ? categoryParam : "all";
   const query = q?.trim() ?? "";
@@ -35,7 +41,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
 
   const filteredProducts = products.filter((product) => {
     const categoryMatch = selectedCategory === "all" || product.category === selectedCategory;
-    const searchSource = `${product.name} ${product.description} ${product.spec}`.toLowerCase();
+    const searchSource = `${product.name} ${product.description} ${product.summary} ${product.useCases.join(" ")}`.toLowerCase();
     const searchMatch = queryLower.length === 0 || searchSource.includes(queryLower);
     return categoryMatch && searchMatch;
   });
@@ -49,7 +55,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
       <section className="relative h-[36vh] min-h-[250px] overflow-hidden sm:h-[42vh]">
         <Image
           src={heroImage}
-          alt="Excavator and construction machinery at an industrial site"
+          alt="Bundled TMT B500 steel bars"
           fill
           priority
           sizes="100vw"
@@ -64,8 +70,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
               Our Products
             </h1>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-white/90 sm:text-base">
-              Browse construction and industrial materials, then filter quickly by category before
-              opening each product detail page.
+              Browse steel, roofing, cement, scrap and plastic products, then filter by category.
             </p>
           </div>
         </div>
@@ -93,9 +98,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             Product Catalog
           </h2>
           <p className="theme-muted mt-4 max-w-3xl text-base leading-7 sm:text-lg">
-            Filter products by category and click any product to open its details page. This
-            catalog currently uses practical placeholder data while full technical sheets are being
-            compiled.
+            Filter products by category and open a product page for its image, overview and contact route.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -175,7 +178,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
                   <div className="relative aspect-[4/3]">
                     <Image
                       src={product.image}
-                      alt={product.name}
+                      alt={product.imageAlt}
                       fill
                       sizes="(min-width: 1280px) 30vw, (min-width: 640px) 50vw, 100vw"
                       className="object-cover"
@@ -188,7 +191,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
                     <h3 className="mt-3 text-xl font-bold text-[var(--kanan-text)]">{product.name}</h3>
                     <p className="theme-muted mt-2 text-sm leading-6">{product.description}</p>
                     <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-[var(--kanan-brand-blue)]">
-                      {product.spec}
+                      {categoryLabels[product.category]}
                     </p>
                     <Link
                       href={`/products/${product.slug}`}
