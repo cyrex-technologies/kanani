@@ -34,9 +34,9 @@ export default function Footer() {
               <Mail className="mt-0.5 h-7 w-7 shrink-0 text-[var(--kanan-brand-gold-soft)]" aria-hidden="true" />
               <span><span className="block text-sm font-bold uppercase tracking-[0.16em] text-white/70">Email</span><span className="mt-1 block font-semibold">info@kanan.co.tz</span></span>
             </a>
-            <a href="tel:+255745120612" className="flex items-start gap-4 rounded-lg transition hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:pl-7">
+            <a href="tel:+255677125108" className="flex items-start gap-4 rounded-lg transition hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:pl-7">
               <Phone className="mt-0.5 h-7 w-7 shrink-0 text-[var(--kanan-brand-gold-soft)]" aria-hidden="true" />
-              <span><span className="block text-sm font-bold uppercase tracking-[0.16em] text-white/70">Phone</span><span className="mt-1 block font-semibold">+255 745 120 612</span></span>
+              <span><span className="block text-sm font-bold uppercase tracking-[0.16em] text-white/70">Phone</span><span className="mt-1 block font-semibold">+255 677 125 108</span></span>
             </a>
           </div>
         </section>
@@ -58,7 +58,7 @@ export default function Footer() {
             <address className="mt-5 not-italic">
               <a href="https://www.google.com/maps/search/?api=1&query=Mivumoni+Madale+Dar+es+Salaam+Tanzania" target="_blank" rel="noreferrer" className={footerLinkClass}><MapPin className="h-4 w-4 shrink-0 text-[var(--kanan-brand-gold-soft)]" aria-hidden="true" /><span>Mivumoni, Dar es Salaam, Tanzania</span></a>
               <a href="mailto:info@kanan.co.tz" className={footerLinkClass}><Mail className="h-4 w-4 shrink-0 text-[var(--kanan-brand-gold-soft)]" aria-hidden="true" /><span>info@kanan.co.tz</span></a>
-              <a href="tel:+255745120612" className={footerLinkClass}><Phone className="h-4 w-4 shrink-0 text-[var(--kanan-brand-gold-soft)]" aria-hidden="true" /><span>+255 745 120 612</span></a>
+              <a href="tel:+255677125108" className={footerLinkClass}><Phone className="h-4 w-4 shrink-0 text-[var(--kanan-brand-gold-soft)]" aria-hidden="true" /><span>+255 677 125 108</span></a>
             </address>
           </div>
         </div>

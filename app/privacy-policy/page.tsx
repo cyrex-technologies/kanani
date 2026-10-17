@@ -13,7 +13,7 @@ const sections: LegalSection[] = [
   { title: "Your choices and requests", paragraphs: ["You can contact Kanan with questions or requests about personal information you submitted through this website. Kanan will consider requests in line with its applicable processes and obligations."] },
   { title: "External links", paragraphs: ["Links to third-party websites are controlled by those providers. Their privacy practices are governed by their own policies."] },
   { title: "Policy updates", paragraphs: ["Kanan may update this policy when its website practices change. The version published on this page is the current website version."] },
-  { title: "Contact", paragraphs: ["For privacy questions, contact Kanan Services Limited at info@kanan.co.tz or +255 745 120 612.", "This initial website policy should be reviewed by a qualified Tanzanian legal professional before it is treated as final legal advice."] },
+  { title: "Contact", paragraphs: ["For privacy questions, contact Kanan Services Limited at info@kanan.co.tz or +255 677 125 108.", "This initial website policy should be reviewed by a qualified Tanzanian legal professional before it is treated as final legal advice."] },
 ];
 
 export default function PrivacyPolicyPage() { return <LegalPage title="Privacy Policy" description="How Kanan Services Limited handles website enquiries and analytics information." publishedLabel="Published on 17 October 2026" sections={sections} />; }

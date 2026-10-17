@@ -13,7 +13,7 @@ const sections: LegalSection[] = [
   { title: "External links", paragraphs: ["This website may link to third-party websites. Those websites are controlled by their providers and may have their own terms and privacy practices."] },
   { title: "Responsibility", paragraphs: ["Nothing on this website replaces project-specific professional, engineering, procurement or legal advice. Kanan will discuss the information needed for an enquiry, while final project decisions remain with the relevant customer and professional team."] },
   { title: "Changes to these terms", paragraphs: ["Kanan may update these terms when website practices change. The version published on this page is the current website version."] },
-  { title: "Contact", paragraphs: ["For questions about these terms, contact Kanan Services Limited at info@kanan.co.tz or +255 745 120 612.", "These website terms should be reviewed by a qualified Tanzanian legal professional before being treated as final legal advice."] },
+  { title: "Contact", paragraphs: ["For questions about these terms, contact Kanan Services Limited at info@kanan.co.tz or +255 677 125 108.", "These website terms should be reviewed by a qualified Tanzanian legal professional before being treated as final legal advice."] },
 ];
 
 export default function TermsPage() { return <LegalPage title="Terms of Service" description="Important information about using the Kanan Services Limited website and submitting product enquiries." publishedLabel="Published on 17 October 2026" sections={sections} />; }

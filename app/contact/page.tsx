@@ -29,8 +29,8 @@ const quickContacts = [
   },
   {
     title: "Call Our Team",
-    detail: "+255 745 120 612",
-    href: "tel:+255745120612",
+    detail: "+255 677 125 108",
+    href: "tel:+255677125108",
     cta: "Call Now",
     icon: PhoneIcon,
   },
@@ -269,10 +269,10 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                   team or service point.
                 </p>
                 <Link
-                  href="tel:+255745120612"
+                  href="tel:+255677125108"
                   className="btn-theme-primary mt-5 inline-flex rounded-full px-5 py-2.5 text-sm font-semibold"
                 >
-                  +255 745 120 612
+                  +255 677 125 108
                 </Link>
               </article>
             </aside>
