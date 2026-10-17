@@ -7,11 +7,12 @@ export default function AboutSection() {
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
         <div className="relative">
           <Image
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDNzj-7PN4GH7yns-6TIn-b3U3mp5wL3e-B8z9Jj4nvnKKGKPMClBsbvds0wxIkk3fCgqPpz7JMlkZH9TbYct5b0gVQgjEqRSRx1z1R6Q9Sf-Y41RGNypo0maY6-KUjY8p1Hhbrp9p0y-kagjlDRokUrkFWWpIQpNfrtRZcOmIbY_ebJlhUZMBVtbA6SC-BZO1pMV1qGzulEL6HTQXQmXZFuGVBvGh9rBryhN3wEfgmWDyM2T3p3Tujv0bK-2JOETT9QDMPdc_FgGr"
-            alt="Warehouse shelves filled with construction supplies"
-            width={900}
-            height={600}
-            className="theme-border h-full max-h-[430px] w-full rounded-lg border object-cover"
+            src="/images/about/kanan-services-headquarters.webp"
+            alt="Kanan Services Limited headquarters building"
+            width={1145}
+            height={1374}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="theme-border h-full max-h-[560px] w-full rounded-lg border object-cover object-center"
           />
           <div className="absolute -bottom-5 right-0 rounded bg-[var(--kanan-brand-blue)] px-7 py-5 shadow-lg shadow-black/20 sm:right-5">
             <p className="text-3xl font-black text-white">14+</p>

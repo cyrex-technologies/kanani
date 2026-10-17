@@ -5,13 +5,13 @@ import { ArrowRightIcon } from "@/components/shared/icons";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[var(--kanan-brand-blue)] text-white">
+    <section className="relative flex min-h-[calc(100svh-4.5rem)] overflow-hidden bg-[var(--kanan-brand-blue)] text-white">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_80%_at_75%_5%,rgba(255,255,255,0.18),transparent_65%)]" />
       <div className="pointer-events-none absolute inset-0 opacity-25">
         <div className="h-full w-full bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:170px_170px]" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 lg:px-8 lg:pb-20 lg:pt-16">
+      <div className="relative mx-auto flex w-full max-w-7xl items-center px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-7">
             {/* <p className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-blue-100">
