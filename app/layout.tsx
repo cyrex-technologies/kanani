@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -24,6 +25,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-1E6097TGBL" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-1E6097TGBL');`}
+        </Script>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "Organization", name: "Kanan Services Limited", url: "https://kanan.co.tz" }) }} />
         {children}
       </body>
