@@ -16,7 +16,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         <nav className="mx-auto flex max-w-7xl items-center gap-2 text-sm text-[var(--kanan-muted)]" aria-label="Breadcrumb">
           <Link href="/products" className="hover:text-[var(--kanan-brand-blue)]">Products</Link>
           <span aria-hidden="true">/</span>
-          <Link href={`/products?category=${product.category}`} className="hover:text-[var(--kanan-brand-blue)]">{categoryLabels[product.category]}</Link>
+          <Link href={`/products/category/${product.category}`} className="hover:text-[var(--kanan-brand-blue)]">{categoryLabels[product.category]}</Link>
           <span aria-hidden="true">/</span>
           <span className="font-semibold text-[var(--kanan-brand-blue)]" aria-current="page">{product.name}</span>
         </nav>
@@ -31,7 +31,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             </div>
             <h1 className="mt-6 text-4xl font-black tracking-tight text-[var(--kanan-text)] sm:text-5xl">{product.name}</h1>
             <p className="theme-muted mt-4 max-w-3xl text-lg leading-relaxed">{product.description}</p>
-            <Link href="/contact" className="btn-theme-blue mt-6 inline-flex rounded-full px-6 py-3 text-sm font-bold">Request pricing or availability</Link>
+            <Link href={`/contact?product=${encodeURIComponent(product.name)}`} className="btn-theme-blue mt-6 inline-flex rounded-full px-6 py-3 text-sm font-bold">Request pricing or availability</Link>
 
             <div className="mt-10 space-y-10 border-t border-[var(--kanan-line)] pt-10">
               <section>
@@ -54,7 +54,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             <div className="theme-section-brand rounded-2xl p-7 shadow-[var(--kanan-shadow-soft)]">
               <h2 className="text-3xl font-black leading-tight text-white">Discuss your project</h2>
               <p className="mt-4 text-sm leading-relaxed text-blue-100">Use the contact form to request current product information, pricing, or availability.</p>
-              <Link href="/contact" className="btn-theme-primary mt-5 inline-flex w-full justify-center rounded-lg px-6 py-3 text-sm font-bold">Contact Kanan</Link>
+              <Link href={`/contact?product=${encodeURIComponent(product.name)}`} className="btn-theme-primary mt-5 inline-flex w-full justify-center rounded-lg px-6 py-3 text-sm font-bold">Contact Kanan</Link>
             </div>
           </aside>
         </div>

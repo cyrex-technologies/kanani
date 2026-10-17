@@ -7,6 +7,7 @@ export type ContactFormPayload = {
   interest: string;
   city: string;
   preferredBranch: string;
+  product: string;
   message: string;
   company: string;
   startedAt: number;

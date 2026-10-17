@@ -8,10 +8,12 @@ import { getBranchesForCity, getDefaultBranch, getDefaultCity } from "@/lib/cont
 
 type ContactInquiryFormProps = {
   initialPosition?: string;
+  initialProduct?: string;
 };
 
-export default function ContactInquiryForm({ initialPosition }: ContactInquiryFormProps) {
+export default function ContactInquiryForm({ initialPosition, initialProduct }: ContactInquiryFormProps) {
   const position = initialPosition?.trim();
+  const product = initialProduct?.trim();
   const defaultCity = getDefaultCity();
 
   const [startedAt] = useState(() => Date.now());
@@ -22,9 +24,10 @@ export default function ContactInquiryForm({ initialPosition }: ContactInquiryFo
     interest: position ? "Careers" : contactInquiryOptions[0],
     city: defaultCity,
     preferredBranch: getDefaultBranch(defaultCity),
+    product: product ?? "",
     message: position
       ? `I would like more information about the ${position} opportunity at Kanan Services Limited.`
-      : "",
+      : product ? `I would like more information about ${product}.` : "",
     company: "",
   }));
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -55,10 +58,11 @@ export default function ContactInquiryForm({ initialPosition }: ContactInquiryFo
       phone: "",
       interest: position ? "Careers" : contactInquiryOptions[0],
       city: defaultCity,
-      preferredBranch: getDefaultBranch(defaultCity),
+    preferredBranch: getDefaultBranch(defaultCity),
+      product: product ?? "",
       message: position
         ? `I would like more information about the ${position} opportunity at Kanan Services Limited.`
-        : "",
+        : product ? `I would like more information about ${product}.` : "",
       company: "",
     });
   }
@@ -90,6 +94,11 @@ export default function ContactInquiryForm({ initialPosition }: ContactInquiryFo
       setStatus({
         type: "success",
         message: result.message || "Your inquiry has been sent successfully.",
+      });
+      const analytics = window as Window & { gtag?: (...args: unknown[]) => void };
+      analytics.gtag?.("event", "generate_lead", {
+        form_name: "contact_inquiry",
+        product_name: product || undefined,
       });
       resetForm();
     } catch (error) {

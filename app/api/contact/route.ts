@@ -36,6 +36,7 @@ function buildTextBody(payload: ContactFormPayload) {
     `Email: ${payload.email}`,
     `Phone: ${payload.phone}`,
     `Interest: ${payload.interest}`,
+    ...(payload.product ? [`Product: ${payload.product}`] : []),
     `City: ${payload.city}`,
     `Preferred Branch: ${payload.preferredBranch}`,
     "",
@@ -57,6 +58,7 @@ export async function POST(request: Request) {
     interest: sanitize(body.interest),
     city: sanitize(body.city),
     preferredBranch: sanitize(body.preferredBranch),
+    product: sanitize(body.product),
     message: sanitize(body.message),
     company: sanitize(body.company),
     startedAt: Number(body.startedAt ?? 0),
@@ -120,6 +122,7 @@ export async function POST(request: Request) {
       <p><strong>Email:</strong> ${escapeHtml(payload.email)}</p>
       <p><strong>Phone:</strong> ${escapeHtml(payload.phone)}</p>
       <p><strong>Interest:</strong> ${escapeHtml(payload.interest)}</p>
+      ${payload.product ? `<p><strong>Product:</strong> ${escapeHtml(payload.product)}</p>` : ""}
       <p><strong>City:</strong> ${escapeHtml(payload.city)}</p>
       <p><strong>Preferred Branch:</strong> ${escapeHtml(payload.preferredBranch)}</p>
       <p><strong>Message:</strong></p>

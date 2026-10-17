@@ -46,12 +46,14 @@ const quickContacts = [
 type ContactPageProps = {
   searchParams?: Promise<{
     position?: string;
+    product?: string;
   }>;
 };
 
 export default async function ContactPage({ searchParams }: ContactPageProps) {
   const params = searchParams ? await searchParams : undefined;
   const position = params?.position;
+  const product = params?.product;
 
   return (
     <main className="theme-shell min-h-screen">
@@ -224,7 +226,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
               </p>
 
               <div className="mt-8">
-                <ContactInquiryForm initialPosition={position} />
+                <ContactInquiryForm initialPosition={position} initialProduct={product} />
               </div>
             </div>
 
