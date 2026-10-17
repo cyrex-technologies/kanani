@@ -103,13 +103,18 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             {categoryItems.map((item) => {
-              const href = item.id === "all" ? "/products" : `/products/category/${item.id}`;
+              const categoryQuery = item.id === "all" ? "" : `category=${item.id}`;
+              const searchQuery = query ? `q=${encodeURIComponent(query)}` : "";
+              const href = [categoryQuery, searchQuery].filter(Boolean).length > 0
+                ? `/products?${[categoryQuery, searchQuery].filter(Boolean).join("&")}`
+                : "/products";
               const isActive = selectedCategory === item.id;
 
               return (
                 <Link
                   key={item.id}
                   href={href}
+                  scroll={false}
                   className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
                     isActive
                       ? "border-[var(--kanan-brand-blue)] bg-[var(--kanan-brand-blue)] text-white shadow-[0_8px_20px_rgba(1,72,187,0.18)]"
@@ -121,6 +126,19 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
               );
             })}
           </div>
+
+          {selectedCategory !== "all" ? (
+            <p className="mt-5 text-sm text-[var(--kanan-muted-strong)]">
+              Want an overview of this range?{" "}
+              <Link
+                href={`/products/category/${selectedCategory}`}
+                className="font-semibold text-[var(--kanan-brand-blue)] underline underline-offset-4 hover:text-[var(--kanan-brand-red)]"
+              >
+                Explore the {categoryLabels[selectedCategory]} category page
+              </Link>
+              .
+            </p>
+          ) : null}
 
           <form action="/products" className="mt-6 flex max-w-xl items-center gap-3">
             {selectedCategory !== "all" ? (
