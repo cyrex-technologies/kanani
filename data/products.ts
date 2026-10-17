@@ -1,3 +1,5 @@
+import { productContent, type ProductContent } from "@/data/product-content";
+
 export type ProductCategoryId = "scrap" | "steel" | "roofing" | "cement" | "plastic";
 
 export type ProductSpec = { property: string; value: string };
@@ -103,4 +105,3 @@ export function getProductDetailBySlug(slug: string): ProductDetailEntry | undef
   if (!item) return undefined;
   return { ...item, breadcrumbs: ["Products", categoryLabels[item.category], item.name], specifications: [], relatedProducts: getRelatedProducts(item) };
 }
-import { productContent, type ProductContent } from "@/data/product-content";
