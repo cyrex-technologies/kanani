@@ -22,15 +22,15 @@ const footerLinkClass = "group inline-flex items-center gap-2 rounded py-1 text-
 
 export default function Footer() {
   return (
-    <footer className="relative isolate mt-28 overflow-hidden bg-[#03132f] text-white">
+    <footer className="relative isolate mt-28 bg-[#03132f] text-white">
       <Image
         src="/images/footer/kanan-industrial-yard-delivery.webp"
         alt=""
         fill
         sizes="100vw"
-        className="object-cover opacity-25"
+        className="object-cover opacity-55"
       />
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(2,11,31,0.97),rgba(3,19,51,0.94)_52%,rgba(2,11,31,0.9))]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(2,11,31,0.82),rgba(3,19,51,0.75)_52%,rgba(2,11,31,0.8))]" />
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <section className="relative -top-10 mb-[-2.5rem] rounded-3xl border border-white/15 bg-[var(--kanan-brand-blue-strong)] px-6 py-7 shadow-[0_18px_40px_rgba(4,20,43,0.32)] sm:px-8 lg:px-10" aria-label="Contact Kanan">
           <div className="grid gap-6 md:grid-cols-3 md:gap-0">
