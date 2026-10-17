@@ -98,14 +98,14 @@ export default function AboutPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
               <Image
                 src={aboutWhoWeAreImage}
-                alt="Kanani warehouse and construction material operations"
+                alt="Kanan Services Limited truck fleet in an industrial yard"
                 fill
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(6,22,45,0.5),transparent_55%)]" />
               <span className="absolute bottom-4 left-4 rounded-full bg-[rgba(6,22,45,0.72)] px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white">
-                Verified Inventory
+                Kanan Logistics Fleet
               </span>
             </div>
           </article>

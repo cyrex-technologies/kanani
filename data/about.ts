@@ -14,7 +14,7 @@ export type MilestoneItem = {
 };
 
 export const aboutWhoWeAreImage =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDDNzj-7PN4GH7yns-6TIn-b3U3mp5wL3e-B8z9Jj4nvnKKGKPMClBsbvds0wxIkk3fCgqPpz7JMlkZH9TbYct5b0gVQgjEqRSRx1z1R6Q9Sf-Y41RGNypo0maY6-KUjY8p1Hhbrp9p0y-kagjlDRokUrkFWWpIQpNfrtRZcOmIbY_ebJlhUZMBVtbA6SC-BZO1pMV1qGzulEL6HTQXQmXZFuGVBvGh9rBryhN3wEfgmWDyM2T3p3Tujv0bK-2JOETT9QDMPdc_FgGr";
+  "/images/about/kanan-truck-fleet.webp";
 
 export const aboutServicePills = ["Bulk Sourcing", "Cement & Steel", "Scrap & Roofing", "Industrial Supply"];
 
