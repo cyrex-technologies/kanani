@@ -56,7 +56,7 @@ export default function Hero() {
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
               href="/products"
-              className="btn-theme-primary inline-flex items-center gap-2 rounded px-6 py-3 text-sm font-bold"
+              className="btn-theme-primary inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold"
             >
               Explore Products
               <ArrowRightIcon className="h-4 w-4" />

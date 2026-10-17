@@ -94,7 +94,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           <Link
             href="/contact"
-            className="btn-theme-primary hidden rounded px-3 py-2 text-xs font-semibold transition md:inline-flex"
+            className="btn-theme-primary hidden rounded-full px-4 py-2.5 text-xs font-semibold md:inline-flex"
           >
             Get a Quote
           </Link>
@@ -103,7 +103,7 @@ export default function Navbar() {
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen((value) => !value)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded border border-[var(--kanan-line)] bg-white text-[var(--kanan-brand-blue)] md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--kanan-line)] bg-white text-[var(--kanan-brand-blue)] md:hidden"
           >
             {isMenuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
           </button>
@@ -158,7 +158,7 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={() => setIsMenuOpen(false)}
-              className="btn-theme-primary mt-2 inline-flex w-full justify-center rounded px-4 py-2.5 text-sm font-semibold"
+              className="btn-theme-primary mt-2 inline-flex w-full justify-center rounded-full px-4 py-2.5 text-sm font-semibold"
             >
               Get a Quote
             </Link>

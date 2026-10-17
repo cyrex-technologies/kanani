@@ -14,10 +14,10 @@ export default function ProductCategories() {
   );
 
   return (
-    <section id="products" className="theme-section-deep py-0">
-      <div className="w-full">
-        <div className="overflow-hidden border-y border-[#d8deea] bg-white">
-          <div className="grid grid-cols-[112px_1fr] lg:grid-cols-[260px_1fr_1.35fr]">
+    <section id="products" className="theme-section-deep flex min-h-[100svh] items-center px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+      <div className="mx-auto w-full max-w-7xl">
+        <div className="overflow-hidden rounded-[2rem] border border-[#d8deea] bg-white shadow-[0_12px_32px_rgba(16,34,70,0.1)] sm:rounded-[2.5rem]">
+          <div className="grid grid-cols-[112px_1fr] lg:min-h-[calc(100svh-5rem)] lg:grid-cols-[260px_1fr_1.35fr]">
             <aside className="row-span-2 bg-[var(--kanan-brand-red)] py-6 text-white lg:row-span-1 lg:py-12">
               <ul>
                 {productCategoryItems.map((item) => {
@@ -29,14 +29,11 @@ export default function ProductCategories() {
                         href={`/products/category/${item.key}`}
                         onMouseEnter={() => setActiveKey(item.key)}
                         onFocus={() => setActiveKey(item.key)}
-                        className={`relative block w-full px-2 py-5 text-left text-sm transition sm:px-4 sm:text-base lg:px-8 ${
-                          isActive ? "bg-white/10 font-semibold" : "hover:bg-white/8"
+                        className={`relative mx-2 block w-[calc(100%-1rem)] rounded-xl px-2 py-5 text-left text-sm transition sm:px-4 sm:text-base lg:mx-4 lg:w-[calc(100%-2rem)] lg:px-4 ${
+                          isActive ? "bg-white/15 font-semibold" : "hover:bg-white/8"
                         }`}
                       >
                         {item.title}
-                        {isActive ? (
-                          <span className="absolute -right-3 top-1/2 h-6 w-6 -translate-y-1/2 rotate-45 bg-[var(--kanan-brand-red)]" />
-                        ) : null}
                       </Link>
                     </li>
                   );
@@ -44,14 +41,14 @@ export default function ProductCategories() {
               </ul>
             </aside>
 
-            <div className="bg-[#f5f6f8] px-4 py-6 sm:px-6 sm:py-8 lg:col-start-2 lg:px-12 lg:py-16">
+            <div className="bg-[#f7f9fd] px-4 py-6 sm:px-6 sm:py-8 lg:col-start-2 lg:flex lg:flex-col lg:justify-center lg:px-12 lg:py-16">
               <p className="text-sm uppercase tracking-widest text-slate-500">Services</p>
               <div className="mt-2 h-[2px] w-28 bg-[var(--kanan-brand-red)] sm:w-40" />
-              <h2 className="mt-4 text-5xl font-bold tracking-tight text-slate-800 sm:text-6xl">
+              <h2 className="mt-4 text-4xl font-bold tracking-tight text-slate-800 sm:text-5xl">
                 What can we offer
               </h2>
 
-              <h3 className="mt-8 text-5xl font-medium text-slate-900 sm:mt-10 sm:text-6xl">
+              <h3 className="mt-8 text-4xl font-medium text-slate-900 sm:mt-10 sm:text-5xl">
                 {activeItem.heroTitle}
               </h3>
               <p className="mt-4 max-w-xl text-xl leading-relaxed text-slate-600 sm:text-2xl">

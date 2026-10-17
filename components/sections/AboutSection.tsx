@@ -12,9 +12,9 @@ export default function AboutSection() {
             width={1145}
             height={1374}
             sizes="(min-width: 1024px) 50vw, 100vw"
-            className="theme-border h-full max-h-[560px] w-full rounded-lg border object-cover object-center"
+            className="theme-border h-full max-h-[560px] w-full rounded-[2rem] border object-cover object-center"
           />
-          <div className="absolute -bottom-5 right-0 rounded bg-[var(--kanan-brand-blue)] px-7 py-5 shadow-lg shadow-black/20 sm:right-5">
+          <div className="absolute -bottom-5 right-0 rounded-2xl bg-[var(--kanan-brand-blue)] px-7 py-5 shadow-lg shadow-black/20 sm:right-5">
             <p className="text-3xl font-black text-white">14+</p>
             <p className="text-xs text-slate-200">Years of Experience</p>
           </div>

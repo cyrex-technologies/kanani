@@ -29,7 +29,7 @@ const benefits = [
 
 export default function WhyChooseSection() {
   return (
-    <section className="bg-[#eef0f3] py-20">
+    <section className="bg-[#eef4ff] py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
@@ -51,7 +51,7 @@ export default function WhyChooseSection() {
           {benefits.map((benefit) => (
             <article
               key={benefit.title}
-              className="relative border border-white/70 bg-white px-7 py-8 shadow-[0_10px_24px_rgba(16,34,70,0.06)]"
+              className="relative rounded-3xl border border-white/70 bg-white px-7 py-8 shadow-[0_4px_14px_rgba(16,34,70,0.09)]"
             >
               <span className="absolute left-5 top-5 h-12 w-12 rounded-full bg-[rgba(227,31,47,0.15)]" />
               <div className="relative mb-6 flex h-12 w-12 items-center justify-center text-[var(--kanan-brand-red)]">
