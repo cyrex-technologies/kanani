@@ -103,7 +103,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             {categoryItems.map((item) => {
-              const href = item.id === "all" ? "/products" : `/products?category=${item.id}`;
+              const href = item.id === "all" ? "/products" : `/products/category/${item.id}`;
               const isActive = selectedCategory === item.id;
 
               return (

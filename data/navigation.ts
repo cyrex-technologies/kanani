@@ -12,7 +12,7 @@ export type ProductMenuSection = {
 export const productMenu: ProductMenuSection[] = [
   {
     title: "Scrap Materials",
-    href: "/products?category=scrap",
+    href: "/products/category/scrap",
     items: [
       { label: "Heavy Melting Scrap (HMS)", href: "/products/heavy-melting-scrap-hms" },
       { label: "Cast Iron", href: "/products/cast-iron" },
@@ -21,7 +21,7 @@ export const productMenu: ProductMenuSection[] = [
   },
   {
     title: "Steel Products",
-    href: "/products?category=steel",
+    href: "/products/category/steel",
     items: [
       { label: "TMT B500 Steel Bars", href: "/products/tmt-b500-steel-bars" },
       { label: "TMT B300 Steel Bars", href: "/products/tmt-b300-steel-bars" },
@@ -37,35 +37,37 @@ export const productMenu: ProductMenuSection[] = [
   },
   {
     title: "Roofing Materials",
-    href: "/products?category=roofing",
+    href: "/products/category/roofing",
     items: [
       { label: "Aluzinki Corrugated Sheets", href: "/products/aluzinki-corrugated-sheets" },
       { label: "Rangi Corrugated Sheets", href: "/products/rangi-corrugated-sheets" },
-      { label: "IT4 and IT5", href: "/products/it4-it5-roofing-sheets" },
+      { label: "IT4 and IT5 Roofing Sheets", href: "/products/it4-it5-roofing-sheets" },
+      { label: "Wavestyle Roofing Sheets", href: "/products/wavestyle-roofing-sheets" },
+      { label: "Mountstyle Roofing Sheets", href: "/products/mountstyle-roofing-sheets" },
     ],
   },
   {
     title: "Cement Supply",
-    href: "/products?category=cement",
+    href: "/products/category/cement",
     items: [
       {
-        label: "Dangote 42.5N (Authorised Distributor)",
+        label: "Dangote Cement 42.5N",
         href: "/products/dangote-42-5n-authorised-distributor",
       },
       {
-        label: "Dangote 42.5R (Authorised Distributor)",
+        label: "Dangote Cement 42.5R",
         href: "/products/dangote-42-5r-authorised-distributor",
       },
-      { label: "Huaxin", href: "/products/huaxin" },
+      { label: "Huaxin Cement", href: "/products/huaxin" },
     ],
   },
   {
     title: "Plastic Products",
-    href: "/products?category=plastic",
+    href: "/products/category/plastic",
     items: [
       { label: "Recycled PE Pellets", href: "/products/plastic-recycling-pe" },
       { label: "Recycled PP Pellets", href: "/products/plastic-recycling-pp" },
-      { label: "Water Tank - TriTank", href: "/products/water-tank-tritank" },
+      { label: "TriTank Water Tanks", href: "/products/water-tank-tritank" },
       { label: "UPVC Borewell Pipes", href: "/products/upvc-borewell-pipes" },
       { label: "UPVC Pipes", href: "/products/upvc-pipes" },
       { label: "HDPE Pipes", href: "/products/hdpe-pipes" },
