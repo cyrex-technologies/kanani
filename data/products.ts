@@ -20,7 +20,7 @@ export type CatalogProduct = {
   description: string;
   summary: string;
   useCases: string[];
-};
+} & ProductContent;
 
 export type ProductDetailEntry = CatalogProduct & {
   breadcrumbs: string[];
@@ -45,7 +45,7 @@ export const categoryLabels: Record<ProductCategoryId, string> = {
 const product = (
   id: string, slug: string, name: string, category: ProductCategoryId, image: string, imageAlt: string,
   description: string, summary: string, useCases: string[] = [],
-): CatalogProduct => ({ id, slug, name, category, image, imageAlt, description, summary, useCases });
+): CatalogProduct => ({ id, slug, name, category, image, imageAlt, description, summary, useCases, ...productContent[slug] });
 
 // Each asset path maps directly to a named source supplied in kanan-products.
 export const products: CatalogProduct[] = [
@@ -103,3 +103,4 @@ export function getProductDetailBySlug(slug: string): ProductDetailEntry | undef
   if (!item) return undefined;
   return { ...item, breadcrumbs: ["Products", categoryLabels[item.category], item.name], specifications: [], relatedProducts: getRelatedProducts(item) };
 }
+import { productContent, type ProductContent } from "@/data/product-content";
