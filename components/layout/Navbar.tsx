@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { productMenu } from "@/data/navigation";
 
@@ -104,13 +105,7 @@ export default function Navbar() {
             onClick={() => setIsMenuOpen((value) => !value)}
             className="inline-flex h-10 w-10 items-center justify-center rounded border border-[var(--kanan-line)] bg-white text-[var(--kanan-brand-blue)] md:hidden"
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-5 w-5">
-              {isMenuOpen ? (
-                <path d="M6 6l12 12M18 6 6 18" strokeWidth="2" />
-              ) : (
-                <path d="M4 7h16M4 12h16M4 17h16" strokeWidth="2" />
-              )}
-            </svg>
+            {isMenuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
           </button>
         </div>
       </div>

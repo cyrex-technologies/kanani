@@ -5,7 +5,7 @@ import { products } from "@/data/products";
 const baseUrl = "https://kanan.co.tz";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages: MetadataRoute.Sitemap = ["", "/about", "/contact", "/careers", "/products"].map((path) => ({
+  const staticPages: MetadataRoute.Sitemap = ["", "/about", "/contact", "/careers", "/products", "/terms", "/privacy-policy"].map((path) => ({
     url: `${baseUrl}${path}`,
     changeFrequency: "weekly",
     priority: path === "" ? 1 : 0.8,
