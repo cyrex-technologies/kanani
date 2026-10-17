@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: { default: "Kanan Services Limited", template: "%s | Kanan Services Limited" },
   description:
     "Trusted supplier of cement, steel, scrap, roofing, and plastic products for industrial and construction projects.",
+  verification: {
+    google: "ziccUgcVPerJ8fxL3KKfsjDsZ4NoGb2pZoTUMdD0RSc",
+  },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
