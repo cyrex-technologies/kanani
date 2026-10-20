@@ -71,7 +71,7 @@ export default function Hero() {
             {partners.map((partner) => (
               <div
                 key={partner.id}
-                className={`relative h-9 w-28 ${partner.id === "2" ? "sm:h-19 sm:w-41" : "sm:h-10 sm:w-36"}`}
+                className={`relative h-9 w-28 ${partner.id === "2" ? "sm:h-17 sm:w-39" : "sm:h-10 sm:w-36"}`}
               >
                 <Image
                   src={partner.logo}
