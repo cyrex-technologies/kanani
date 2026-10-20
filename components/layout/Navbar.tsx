@@ -3,15 +3,33 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { productMenu } from "@/data/navigation";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const isHeroNav = isHome && !isScrolled;
+
+  useEffect(() => {
+    const updateNavigation = () => setIsScrolled(window.scrollY > 28);
+    updateNavigation();
+    window.addEventListener("scroll", updateNavigation, { passive: true });
+    return () => window.removeEventListener("scroll", updateNavigation);
+  }, []);
 
   return (
-    <header className="theme-header sticky top-0 z-50 border-b backdrop-blur">
+    <header
+      className={`${isHome ? "fixed inset-x-0" : "sticky"} top-0 z-50 border-b transition-all duration-300 ${
+        isHeroNav
+          ? "border-transparent bg-transparent text-white"
+          : "border-[var(--kanan-line)] bg-white/95 text-[var(--kanan-text)] shadow-[0_4px_18px_rgba(3,34,111,0.1)] backdrop-blur"
+      }`}
+    >
       <div className="mx-auto flex h-18 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" aria-label="Kanan home" className="inline-flex items-center">
           <Image
@@ -103,7 +121,11 @@ export default function Navbar() {
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen((value) => !value)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--kanan-line)] bg-white text-[var(--kanan-brand-blue)] md:hidden"
+            className={`inline-flex h-10 w-10 items-center justify-center rounded-full border md:hidden ${
+              isHeroNav
+                ? "border-white/40 bg-white/10 text-white"
+                : "border-[var(--kanan-line)] bg-white text-[var(--kanan-brand-blue)]"
+            }`}
           >
             {isMenuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
           </button>

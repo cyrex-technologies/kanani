@@ -68,7 +68,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
           sizes="100vw"
           className="object-cover object-center opacity-[0.28]"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(27,85,195,0.95)_10%,rgba(27,85,195,0.82)_55%,rgba(27,85,195,0.88)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(3,34,111,0.95)_10%,rgba(3,34,111,0.82)_55%,rgba(3,34,111,0.88)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(55%_55%_at_80%_10%,rgba(255,255,255,0.14),transparent_60%)]" />
 
         <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">

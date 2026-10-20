@@ -65,7 +65,7 @@ export default function CareersBenefits() {
               key={title}
               className="theme-panel rounded-xl p-6 border theme-border"
             >
-              <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-50 text-blue-600 mb-4">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--kanan-bg-soft)] text-[var(--kanan-brand-blue)]">
                 <Icon className="w-4 h-4" />
               </div>
 

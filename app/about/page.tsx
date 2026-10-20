@@ -27,9 +27,9 @@ const pillarIconMap: Record<AboutPillarIcon, ComponentType<{ className?: string 
 };
 
 const pillarAccentClass: Record<AboutPillarIcon, string> = {
-  mission: "bg-[#ff5f68] text-[#06243d]",
-  vision: "bg-[#f3bf57] text-[#06243d]",
-  values: "bg-[#66c8e8] text-[#06243d]",
+  mission: "bg-[#ff5f68] text-[var(--kanan-text)]",
+  vision: "bg-[var(--kanan-brand-red-soft)] text-[var(--kanan-text)]",
+  values: "bg-[var(--kanan-bg-soft)] text-[var(--kanan-text)]",
 };
 
 export default function AboutPage() {
@@ -113,7 +113,7 @@ export default function AboutPage() {
       </section>
 
       <section className="px-4 py-10 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl rounded-2xl bg-[#06243d] px-4 py-8 text-white sm:px-8 sm:py-10">
+        <div className="mx-auto max-w-7xl rounded-2xl bg-[var(--kanan-brand-blue)] px-4 py-8 text-white sm:px-8 sm:py-10">
           <div className="grid gap-6 md:grid-cols-3 md:gap-0">
             {aboutPillars.map((pillar) => {
               const Icon = pillarIconMap[pillar.icon];

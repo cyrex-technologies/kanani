@@ -6,26 +6,27 @@
   --kanan-bg-main: #ffffff;
   --kanan-bg-soft: #eef4ff;
   --kanan-bg-surface: #f4f8ff;
-  --kanan-bg-strong: #0c2d78;
-  --kanan-bg-strong-2: #08235f;
+  --kanan-bg-strong: #03226f;
+  --kanan-bg-strong-2: #02194f;
   --kanan-header: rgba(255, 255, 255, 0.93);
   --kanan-line: #d9e2f1;
 
-  --kanan-brand-blue: #0148bb;
-  --kanan-brand-blue-strong: #1b55c3;
+  --kanan-brand-blue: #03226f;
+  --kanan-brand-blue-strong: #0a3b99;
   --kanan-brand-red: #fd1115;
   --kanan-brand-red-soft: #ff584f;
-  --kanan-brand-gold: #b98420;
-  --kanan-brand-gold-soft: #d7ad55;
+  /* Legacy gold aliases intentionally resolve to Kanan red: highlights are red site-wide. */
+  --kanan-brand-gold: var(--kanan-brand-red);
+  --kanan-brand-gold-soft: var(--kanan-brand-red-soft);
 
-  --kanan-text: #102246;
-  --kanan-muted: #5d6f91;
-  --kanan-muted-strong: #4b6187;
+  --kanan-text: #071c4f;
+  --kanan-muted: #526486;
+  --kanan-muted-strong: #40577e;
   --kanan-text-on-dark: #edf3ff;
 
   --kanan-shadow-soft: 0 3px 12px rgba(20, 46, 92, 0.11);
   --kanan-shadow-red: 0 10px 24px rgba(227, 31, 47, 0.25);
-  --kanan-shadow-gold: 0 8px 22px rgba(185, 132, 32, 0.28);
+  --kanan-shadow-gold: var(--kanan-shadow-red);
 }
 
 * {
@@ -38,7 +39,7 @@ body {
   padding: 0;
   background:
     radial-gradient(72% 58% at 88% 10%, rgba(11, 47, 133, 0.07), transparent 58%),
-    radial-gradient(65% 52% at 8% 96%, rgba(185, 132, 32, 0.1), transparent 60%),
+    radial-gradient(65% 52% at 8% 96%, rgba(253, 17, 21, 0.06), transparent 60%),
     var(--kanan-bg-page);
   color: var(--kanan-text);
   font-family: "Public Sans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -51,7 +52,10 @@ a {
 }
 
 .theme-shell {
-  background: var(--kanan-bg-page);
+  background-color: var(--kanan-bg-page);
+  background-image: linear-gradient(rgba(248, 250, 255, 0.96), rgba(248, 250, 255, 0.96)), url("/images/black-diagonal-dash-pattern.png");
+  background-size: auto, 460px 460px;
+  background-repeat: repeat;
   color: var(--kanan-text);
 }
 
@@ -85,11 +89,17 @@ a {
 }
 
 .theme-section-main {
-  background: var(--kanan-bg-main);
+  background-color: var(--kanan-bg-main);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.96)), url("/images/black-diagonal-dash-pattern.png");
+  background-size: auto, 460px 460px;
+  background-repeat: repeat;
 }
 
 .theme-section-deep {
-  background: linear-gradient(180deg, var(--kanan-bg-surface), var(--kanan-bg-soft));
+  background-color: var(--kanan-bg-soft);
+  background-image: linear-gradient(rgba(238, 244, 255, 0.96), rgba(238, 244, 255, 0.96)), url("/images/black-diagonal-dash-pattern.png");
+  background-size: auto, 460px 460px;
+  background-repeat: repeat;
 }
 
 .theme-section-brand {
@@ -97,9 +107,16 @@ a {
     132deg,
     var(--kanan-brand-blue) 0%,
     var(--kanan-brand-blue-strong) 72%,
-    #1a4ca8 100%
+    var(--kanan-brand-blue-strong) 100%
   );
   color: var(--kanan-text-on-dark);
+}
+
+.theme-patterned-white {
+  background-color: var(--kanan-bg-main);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.96)), url("/images/black-diagonal-dash-pattern.png");
+  background-size: auto, 460px 460px;
+  background-repeat: repeat;
 }
 
 .hero-overlay {
@@ -157,7 +174,7 @@ a {
 
 .btn-theme-gold {
   background: linear-gradient(135deg, var(--kanan-brand-gold), var(--kanan-brand-gold-soft));
-  color: #122445;
+  color: #ffffff;
   border-radius: 9999px;
   box-shadow: var(--kanan-shadow-gold);
   transition: transform 180ms ease, filter 180ms ease, box-shadow 180ms ease;

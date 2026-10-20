@@ -10,14 +10,14 @@ export const partners: Partner[] = [
   {
     id: "1",
     name: "Dangote Cement Tanzania",
-    logo: "/images/partners/partners_dangote_cement_logo.jpg",
+    logo: "/images/partners/dangote-cement-mark.png",
     description: "Leading cement supplier with a strong presence in Tanzania, providing high-quality materials for construction projects",
     category: "supplier",
   },
   {
     id: "2",
     name: "Lodhia Indusries Ltd",
-    logo: "/images/partners/lodhia_industries_logo.webp",
+    logo: "/images/partners/lodhia-industries-mark.png",
     description: "Leading supplier of construction materials including cement, steel, and aggregates with a strong commitment to quality and customer service",
     category: "supplier",
   },

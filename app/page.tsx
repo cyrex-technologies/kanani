@@ -4,7 +4,6 @@ import AboutSection from "@/components/sections/AboutSection";
 import Hero from "@/components/sections/Hero";
 import ProductCategories from "@/components/sections/ProductCategories";
 import WhyChooseSection from "@/components/sections/WhyChooseSection";
-import PartnersSection from "@/components/sections/PartnersSection";
 
 export default function HomePage() {
   return (
@@ -15,7 +14,6 @@ export default function HomePage() {
       <WhyChooseSection />
       <ProductCategories />
       {/* <IndustriesSection /> */}
-      <PartnersSection />
       {/* <CtaSection /> */}
       <Footer />
     </main>

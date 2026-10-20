@@ -39,7 +39,7 @@ export default function CareersPositions() {
                   <div className="flex items-center gap-3 flex-wrap">
                     <p className="font-semibold">{pos.title}</p>
 
-                    <span className="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded-full">
+                    <span className="rounded-full bg-[var(--kanan-bg-soft)] px-3 py-1 text-xs text-[var(--kanan-brand-blue)]">
                       {pos.type}
                     </span>
                   </div>

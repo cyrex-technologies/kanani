@@ -1,35 +1,35 @@
-import { BoxesIcon, ToolsIcon, TruckIcon, WalletIcon } from "@/components/shared/icons";
+import { Building2, Handshake, ShieldCheck, Truck } from "lucide-react";
 
 const benefits = [
   {
     title: "Reliable Material Sourcing",
     description:
       "We partner with trusted manufacturers and suppliers to ensure every material meets strict quality and durability standards for customers.",
-    icon: TruckIcon,
+    icon: Handshake,
   },
   {
     title: "Efficient Supply & Logistics",
     description:
       "Our logistics network ensures fast and dependable delivery, helping contractors and developers keep projects on schedule without material delays.",
-    icon: WalletIcon,
+    icon: Truck,
   },
   {
     title: "Quality Assurance",
     description:
       "Every order goes through careful sourcing and verification to ensure the materials delivered meet project specifications and safety standards. ",
-    icon: BoxesIcon,
+    icon: ShieldCheck,
   },
   {
     title: "Built for Large-Scale Projects",
     description:
       "We specialize in supporting large infrastructure and construction projects with consistent supply capacity and dependable service.",
-    icon: ToolsIcon,
+    icon: Building2,
   },
 ];
 
 export default function WhyChooseSection() {
   return (
-    <section className="bg-[#eef4ff] py-20">
+    <section className="theme-section-deep py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">

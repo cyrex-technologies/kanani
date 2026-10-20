@@ -22,7 +22,7 @@ const footerLinkClass = "group inline-flex items-center gap-2 rounded py-1 text-
 
 export default function Footer() {
   return (
-    <footer className="relative isolate mt-28 bg-[#03132f] text-white">
+    <footer className="relative isolate mt-28 bg-[var(--kanan-bg-strong-2)] text-white">
       <Image
         src="/images/footer/kanan-industrial-yard-delivery.webp"
         alt=""

@@ -39,7 +39,7 @@ export const aboutPillars: AboutPillar[] = [
   },
 ];
 
-export const aboutMilestones: MilestoneItem[] = [
+const aboutMilestoneHistory: MilestoneItem[] = [
   {
     year: "2009",
     title: "Scrap Metal Operations",
@@ -90,3 +90,18 @@ export const aboutMilestones: MilestoneItem[] = [
     caption: "Opened our own office and industry facility to support long-term growth.",
   },
 ];
+
+const kananMilestoneImages = [
+  "/images/products/scrap/scrap-metal-yard.webp",
+  "/images/products/plastic_recycling/plastic_recycling_pp.webp",
+  "/images/hero/kanan-industrial-supply-facility-poster.webp",
+  "/images/footer/kanan-industrial-yard-delivery.webp",
+  "/images/products/cement/dangote_cement.webp",
+  "/images/about/kanan-truck-fleet.webp",
+  "/images/about/kanan-services-headquarters.webp",
+] as const;
+
+export const aboutMilestones: MilestoneItem[] = aboutMilestoneHistory.map((milestone, index) => ({
+  ...milestone,
+  image: kananMilestoneImages[index] ?? aboutWhoWeAreImage,
+}));
