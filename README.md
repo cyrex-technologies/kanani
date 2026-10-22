@@ -2,21 +2,12 @@
 
 Marketing website for Kanan Services Limited built with Next.js App Router.
 
-## Contact Form
+## Contact Form and cPanel
 
-The contact form is handled by the Vercel-hosted route:
-
-```text
-/api/contact
-```
-
-It uses:
-- server-side validation
-- a honeypot field
-- a minimum fill-time check
-- Resend email delivery via environment variables
-
-Required environment variables are listed in `.env.example`.
+The site is a static export. The browser submits enquiries to the same-origin
+PHP endpoint at `/contact-handler.php`; it uses authenticated SMTP configured
+outside the document root. See [CPANEL_DEPLOY.md](CPANEL_DEPLOY.md) for the
+required private configuration, upload layout, verification, and rollback steps.
 
 ## Getting Started
 
@@ -36,6 +27,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Deploy on Vercel
+## Build for cPanel
 
-Add the variables from `.env.example` in the Vercel project settings before testing the contact form.
+```bash
+npm run validate:products
+npm run lint
+npm run build
+```
+
+Upload the contents of `out/` (not the directory itself) to the confirmed cPanel
+document root, then configure and test the PHP handler as documented above.

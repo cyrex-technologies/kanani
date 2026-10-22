@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
+import ProductCatalogueEnhancer from "@/components/products/ProductCatalogueEnhancer";
 import { categories } from "@/data/categories";
 import { categoryLabels, isProductCategory, products } from "@/data/products";
+
+// Query-string filtering is progressively enhanced by the static page; static
+// export must render the canonical all-products catalogue without a server.
+export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -50,6 +56,9 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
 
   return (
     <main className="theme-shell min-h-screen">
+      <Suspense fallback={null}>
+        <ProductCatalogueEnhancer />
+      </Suspense>
       <Navbar />
 
       <section className="relative h-[36vh] min-h-[250px] overflow-hidden sm:h-[42vh]">
@@ -115,6 +124,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
                   key={item.id}
                   href={href}
                   scroll={false}
+                  data-catalogue-category={item.id}
                   className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
                     isActive
                       ? "border-[var(--kanan-brand-blue)] bg-[var(--kanan-brand-blue)] text-white shadow-[0_8px_20px_rgba(1,72,187,0.18)]"
@@ -147,6 +157,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             <input
               type="search"
               name="q"
+              data-catalogue-search
               defaultValue={query}
               placeholder="Search products, specs, keywords..."
               className="h-11 w-full rounded-full border border-[var(--kanan-line)] bg-white px-4 text-sm text-[var(--kanan-text)] placeholder:text-[var(--kanan-muted)] focus:border-[var(--kanan-brand-blue)] focus:outline-none"
@@ -162,8 +173,8 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 flex flex-wrap items-end justify-between gap-3">
             <div>
-              <h2 className="text-3xl font-bold text-[var(--kanan-text)]">{categoryTitle}</h2>
-              <p className="theme-muted mt-1 text-sm">
+              <h2 data-catalogue-title className="text-3xl font-bold text-[var(--kanan-text)]">{categoryTitle}</h2>
+              <p data-catalogue-count className="theme-muted mt-1 text-sm">
                 Showing {filteredProducts.length} product{filteredProducts.length === 1 ? "" : "s"}
                 {query ? ` for "${query}"` : ""}.
               </p>
@@ -173,8 +184,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             </Link>
           </div>
 
-          {filteredProducts.length === 0 ? (
-            <div className="theme-panel rounded-2xl border border-[var(--kanan-line)] p-8 text-center">
+          <div data-catalogue-empty hidden={filteredProducts.length !== 0} className="theme-panel rounded-2xl border border-[var(--kanan-line)] p-8 text-center">
               <h3 className="text-xl font-bold text-[var(--kanan-text)]">No products found</h3>
               <p className="theme-muted mt-2">
                 Try another keyword or clear the filter to view all listed products.
@@ -185,12 +195,14 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
               >
                 Clear Filter
               </Link>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+          </div>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
               {filteredProducts.map((product) => (
                 <article
                   key={product.slug}
+                  data-catalogue-product
+                  data-category={product.category}
+                  data-search={`${product.name} ${product.description} ${product.summary} ${product.useCases.join(" ")}`.toLowerCase()}
                   className="theme-panel overflow-hidden rounded-2xl border border-[var(--kanan-line)]"
                 >
                   <div className="relative aspect-[4/3]">
@@ -220,8 +232,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
                   </div>
                 </article>
               ))}
-            </div>
-          )}
+          </div>
         </div>
       </section>
 

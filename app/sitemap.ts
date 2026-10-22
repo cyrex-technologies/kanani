@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 
 import { products } from "@/data/products";
 
+export const dynamic = "force-static";
+
 const baseUrl = "https://kanan.co.tz";
 
 export default function sitemap(): MetadataRoute.Sitemap {

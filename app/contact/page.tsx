@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
@@ -43,17 +44,7 @@ const quickContacts = [
   },
 ] as const;
 
-type ContactPageProps = {
-  searchParams?: Promise<{
-    position?: string;
-    product?: string;
-  }>;
-};
-
-export default async function ContactPage({ searchParams }: ContactPageProps) {
-  const params = searchParams ? await searchParams : undefined;
-  const position = params?.position;
-  const product = params?.product;
+export default function ContactPage() {
 
   return (
     <main className="theme-shell min-h-screen">
@@ -226,7 +217,9 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
               </p>
 
               <div className="mt-8">
-                <ContactInquiryForm initialPosition={position} initialProduct={product} />
+                <Suspense fallback={null}>
+                  <ContactInquiryForm />
+                </Suspense>
               </div>
             </div>
 

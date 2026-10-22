@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "validate:products": "node scripts/validate-products.mjs"
+    "validate:products": "node scripts/validate-products.mjs",
+    "test:contact": "bash tests/php/contact-handler-test.sh"
   },
   "dependencies": {
     "lucide-react": "^1.59.0",
