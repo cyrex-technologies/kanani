@@ -3,6 +3,7 @@
 import type { FormEvent } from "react";
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { CheckCircle2 } from "lucide-react";
 
 import { contactCityOptions, contactInquiryOptions } from "@/data/contact";
 import { getBranchesForCity, getDefaultBranch, getDefaultCity } from "@/lib/contact-form";
@@ -18,7 +19,7 @@ export default function ContactInquiryForm({ initialPosition, initialProduct }: 
   const product = initialProduct?.trim() || searchParams.get("product")?.trim();
   const defaultCity = getDefaultCity();
 
-  const [startedAt] = useState(() => Date.now());
+  const [startedAt, setStartedAt] = useState(() => Date.now());
   const [form, setForm] = useState(() => ({
     name: "",
     email: "",
@@ -54,6 +55,7 @@ export default function ContactInquiryForm({ initialPosition, initialProduct }: 
   }
 
   function resetForm() {
+    setStartedAt(Date.now());
     setForm({
       name: "",
       email: "",
@@ -119,6 +121,31 @@ export default function ContactInquiryForm({ initialPosition, initialProduct }: 
     } finally {
       setIsSubmitting(false);
     }
+  }
+
+  if (status.type === "success") {
+    return (
+      <section
+        className="flex min-h-[25rem] flex-col items-center justify-center rounded-[1.75rem] bg-white px-6 py-12 text-center text-[var(--kanan-text)] shadow-[0_18px_42px_rgba(0,0,0,0.16)]"
+        role="status"
+        aria-live="polite"
+      >
+        <span className="flex h-20 w-20 items-center justify-center rounded-full bg-emerald-100 text-emerald-500 ring-8 ring-emerald-50">
+          <CheckCircle2 className="h-12 w-12" aria-hidden="true" />
+        </span>
+        <h3 className="mt-7 text-3xl font-black tracking-tight">Thank you!</h3>
+        <p className="mt-3 max-w-sm text-lg leading-8 text-[var(--kanan-muted-strong)]">
+          Your enquiry was submitted successfully. Our team will be in touch soon.
+        </p>
+        <button
+          type="button"
+          onClick={() => setStatus({ type: "idle", message: "" })}
+          className="btn-theme-primary mt-8 rounded-full px-6 py-3 text-sm font-semibold"
+        >
+          Send another enquiry
+        </button>
+      </section>
+    );
   }
 
   return (
@@ -225,9 +252,7 @@ export default function ContactInquiryForm({ initialPosition, initialProduct }: 
 
       {status.type !== "idle" ? (
         <p
-          className={`text-sm lg:col-span-2 ${
-            status.type === "success" ? "text-emerald-300" : "text-red-300"
-          }`}
+          className="text-sm text-red-300 lg:col-span-2"
         >
           {status.message}
         </p>

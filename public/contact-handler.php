@@ -78,13 +78,13 @@ function smtpConfig(): array {
             break;
         }
     }
-    foreach (['smtp_host', 'smtp_port', 'smtp_encryption', 'smtp_username', 'smtp_password', 'from_email', 'from_name', 'recipient_email'] as $key) {
+    foreach (['smtp_host', 'smtp_port', 'smtp_encryption', 'smtp_username', 'smtp_password', 'from_email', 'from_name', 'recipient_email', 'instagram_url'] as $key) {
         $env = getenv('CONTACT_' . strtoupper($key));
         if ($env !== false && $env !== '') $config[$key] = $env;
     }
     return array_merge([
         'smtp_host' => '', 'smtp_port' => 465, 'smtp_encryption' => 'ssl', 'smtp_username' => '', 'smtp_password' => '',
-        'from_email' => '', 'from_name' => 'Kanan Services Limited Website', 'recipient_email' => COMPANY_EMAIL,
+        'from_email' => '', 'from_name' => 'Kanan Services Limited Website', 'recipient_email' => COMPANY_EMAIL, 'instagram_url' => '',
     ], $config);
 }
 
@@ -134,8 +134,12 @@ function smtpSend(array $config, string $to, string $replyTo, string $subject, s
         error_log('Kanan contact SMTP error: ' . $exception->getMessage()); return false;
     }
 }
-function emailShell(string $title, string $content): string {
-    return '<!doctype html><html lang="en"><body style="margin:0;background:#f5f7fb;font-family:Arial,Helvetica,sans-serif;color:#102246"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="padding:32px 14px"><tr><td align="center"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;background:#fff;border:1px solid #dce3f0"><tr><td style="background:#03226f;padding:28px 32px;color:#fff;font-size:24px;font-weight:700">Kanan Services Limited</td></tr><tr><td style="padding:32px"><h1 style="margin:0 0 20px;font-size:27px">' . html($title) . '</h1>' . $content . '</td></tr><tr><td style="padding:22px 32px;background:#f5f7fb;font-size:13px;line-height:1.7">' . COMPANY_NAME . '<br><a href="mailto:' . COMPANY_EMAIL . '">' . COMPANY_EMAIL . '</a> · ' . COMPANY_PHONE . '</td></tr></table></td></tr></table></body></html>';
+function emailShell(array $config, string $title, string $content): string {
+    $instagram = (string) ($config['instagram_url'] ?? '');
+    $instagramLink = filter_var($instagram, FILTER_VALIDATE_URL)
+        ? ' &nbsp;·&nbsp; <a href="' . html($instagram) . '" style="color:#03226f">Instagram</a>'
+        : '';
+    return '<!doctype html><html lang="en"><body style="margin:0;background:#f5f7fb;font-family:Arial,Helvetica,sans-serif;color:#102246"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="padding:32px 14px"><tr><td align="center"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;background:#fff;border:1px solid #dce3f0"><tr><td style="background:#03226f;padding:24px 32px"><img src="https://kanan.co.tz/images/kanan-nav.png" width="190" alt="Kanan Services Limited" style="display:block;width:190px;max-width:100%;height:auto;border:0"></td></tr><tr><td style="padding:32px"><h1 style="margin:0 0 20px;font-size:27px">' . html($title) . '</h1>' . $content . '</td></tr><tr><td style="padding:22px 32px;background:#f5f7fb;font-size:13px;line-height:1.7">' . COMPANY_NAME . '<br><a href="mailto:' . COMPANY_EMAIL . '" style="color:#03226f">' . COMPANY_EMAIL . '</a> &nbsp;·&nbsp; <a href="tel:+255677125108" style="color:#03226f">' . COMPANY_PHONE . '</a>' . $instagramLink . '</td></tr></table></td></tr></table></body></html>';
 }
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') respond(405, false, 'Method not allowed.');
@@ -169,8 +173,8 @@ $smtp = smtpConfig(); $recipient = (string) $smtp['recipient_email'];
 if (!filter_var($recipient, FILTER_VALIDATE_EMAIL)) { error_log('Kanan contact: recipient email is invalid.'); respond(502, false, 'We could not send your inquiry. Please email or call our team directly.'); }
 $summary = "Name: {$name}\nEmail: {$email}\nPhone: {$phone}\nInquiry type: {$interest}\nCity: {$city}\nPreferred branch: {$branch}\n" . ($product !== '' ? "Product: {$product}\n" : '') . "\nMessage:\n{$message}\n";
 $details = '<p style="line-height:1.7">A new website enquiry was submitted.</p><table role="presentation" style="line-height:1.8"><tr><td><strong>Name:</strong></td><td>&nbsp;' . html($name) . '</td></tr><tr><td><strong>Email:</strong></td><td>&nbsp;<a href="mailto:' . html($email) . '">' . html($email) . '</a></td></tr><tr><td><strong>Phone:</strong></td><td>&nbsp;' . html($phone) . '</td></tr><tr><td><strong>Inquiry:</strong></td><td>&nbsp;' . html($interest) . '</td></tr><tr><td><strong>City / branch:</strong></td><td>&nbsp;' . html($city . ' / ' . $branch) . '</td></tr>' . ($product !== '' ? '<tr><td><strong>Product:</strong></td><td>&nbsp;' . html($product) . '</td></tr>' : '') . '</table><p><strong>Message</strong></p><p style="white-space:pre-wrap;line-height:1.7">' . nl2br(html($message)) . '</p>';
-if (!smtpSend($smtp, $recipient, $email, 'Website inquiry | ' . $interest . ' | ' . $name, $summary, emailShell('New website inquiry', $details))) { error_log('Kanan contact: owner notification failed.'); respond(502, false, 'We could not send your inquiry. Please email or call our team directly.'); }
+if (!smtpSend($smtp, $recipient, $email, 'Website inquiry | ' . $interest . ' | ' . $name, $summary, emailShell($smtp, 'New website inquiry', $details))) { error_log('Kanan contact: owner notification failed.'); respond(502, false, 'We could not send your inquiry. Please email or call our team directly.'); }
 $ackText = "Dear {$name},\n\nThank you for contacting Kanan Services Limited. We have received your inquiry and will respond during our office hours.\n\n{$summary}\n";
 $ackHtml = '<p>Dear ' . html($name) . ',</p><p>Thank you for contacting Kanan Services Limited. We have received your inquiry and will respond during our office hours.</p><p><strong>Your message</strong></p><p style="white-space:pre-wrap;line-height:1.7">' . nl2br(html($message)) . '</p>';
-if (!smtpSend($smtp, $email, COMPANY_EMAIL, 'We received your inquiry | Kanan Services Limited', $ackText, emailShell('Thank you for contacting Kanan', $ackHtml))) { error_log('Kanan contact: visitor acknowledgement failed.'); respond(502, false, 'Your inquiry reached our team, but the confirmation email could not be sent. Please contact us directly if needed.'); }
+if (!smtpSend($smtp, $email, COMPANY_EMAIL, 'We received your inquiry | Kanan Services Limited', $ackText, emailShell($smtp, 'Thank you for contacting Kanan', $ackHtml))) { error_log('Kanan contact: visitor acknowledgement failed.'); respond(502, false, 'Your inquiry reached our team, but the confirmation email could not be sent. Please contact us directly if needed.'); }
 respond(200, true, 'Thank you. Your inquiry has been sent and a confirmation email is on its way.');

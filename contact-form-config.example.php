@@ -12,4 +12,6 @@ return [
     'from_email' => 'info@kanan.co.tz',
     'from_name' => 'Kanan Services Limited Website',
     'recipient_email' => 'info@kanan.co.tz',
+    // Optional, e.g. https://www.instagram.com/your-official-kanan-account/
+    'instagram_url' => '',
 ];
