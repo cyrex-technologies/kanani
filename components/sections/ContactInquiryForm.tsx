@@ -98,10 +98,16 @@ export default function ContactInquiryForm({ initialPosition, initialProduct }: 
         body: payload,
       });
 
-      const result = (await response.json()) as { ok?: boolean; message?: string };
+      const responseText = await response.text();
+      let result: { ok?: boolean; message?: string } | null = null;
+      try {
+        result = JSON.parse(responseText) as { ok?: boolean; message?: string };
+      } catch {
+        // A proxy or incorrectly configured host can return HTML or an empty body.
+      }
 
-      if (!response.ok || !result.ok) {
-        throw new Error(result.message || "Unable to send your message right now.");
+      if (!response.ok || !result?.ok) {
+        throw new Error(result?.message || "The enquiry service is temporarily unavailable. Please try again or contact us directly.");
       }
 
       setStatus({
