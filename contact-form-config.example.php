@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-// Copy outside public_html as /home/CPANEL_USER/contact-form-config.php and chmod 0600.
+// Copy outside public_html as /home/CPANEL_USER/kanan-contact-form-config.php and chmod 0600.
 // Do not commit the copied file or put it in the document root.
 return [
     'smtp_host' => 'mail.kanan.co.tz',

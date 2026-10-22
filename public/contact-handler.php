@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 // Adapted from the proven VTB cPanel contact-handler pattern. Keep secrets in
-// /home/CPANEL_USER/contact-form-config.php, never in this public directory.
+// /home/CPANEL_USER/kanan-contact-form-config.php, never in this public directory.
 const COMPANY_NAME = 'Kanan Services Limited';
 const COMPANY_EMAIL = 'info@kanan.co.tz';
 const COMPANY_PHONE = '+255 677 125 108';
@@ -71,7 +71,7 @@ function smtpConfig(): array {
     // Supports both a domain at public_html and a subdomain at public_html/name.
     // Keep the private config in the cPanel account home, outside the web root.
     $config = [];
-    foreach ([dirname(__DIR__) . '/contact-form-config.php', dirname(__DIR__, 2) . '/contact-form-config.php'] as $configFile) {
+    foreach ([dirname(__DIR__) . '/kanan-contact-form-config.php', dirname(__DIR__, 2) . '/kanan-contact-form-config.php'] as $configFile) {
         if (is_file($configFile)) {
             $loaded = require $configFile;
             $config = is_array($loaded) ? $loaded : [];

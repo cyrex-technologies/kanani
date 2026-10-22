@@ -3,7 +3,8 @@
 This release is a static Next.js export with a same-origin PHP enquiry handler.
 It does not require cPanel's Node.js application feature. The implementation is
 adapted from the checked-in Vision Tea Brokers cPanel contact pattern:
-`public/contact-handler.php`, private account-home SMTP configuration, form-url-
+`public/contact-handler.php`, private account-home SMTP configuration in
+`kanan-contact-form-config.php`, form-url-
 encoded requests, and SMTP with a controlled `From` plus visitor `Reply-To`.
 
 ## Build package
@@ -28,7 +29,7 @@ to the document root confirmed in cPanel for `kanan.co.tz`.
 Before uploading, create the real configuration on the hosting account:
 
 ```text
-/home/CPANEL_USER/contact-form-config.php
+/home/CPANEL_USER/kanan-contact-form-config.php
 ```
 
 Copy [`contact-form-config.example.php`](contact-form-config.example.php), replace
