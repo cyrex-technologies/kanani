@@ -84,7 +84,8 @@ function smtpConfig(): array {
     }
     return array_merge([
         'smtp_host' => '', 'smtp_port' => 465, 'smtp_encryption' => 'ssl', 'smtp_username' => '', 'smtp_password' => '',
-        'from_email' => '', 'from_name' => 'Kanan Services Limited Website', 'recipient_email' => COMPANY_EMAIL, 'instagram_url' => '',
+        'from_email' => '', 'from_name' => 'Kanan Services Limited Website', 'recipient_email' => COMPANY_EMAIL,
+        'instagram_url' => 'https://www.instagram.com/kanan.tz/',
     ], $config);
 }
 
