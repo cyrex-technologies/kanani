@@ -105,10 +105,11 @@ function mimeMessage(string $fromEmail, string $fromName, string $to, string $re
         'Content-Type: multipart/alternative; boundary="' . $boundary . '"',
         'From: ' . $fromName . ' <' . $fromEmail . '>', 'Reply-To: ' . $replyTo, 'X-Mailer: PHP/' . PHP_VERSION,
     ];
-    $encode = static fn(string $body): string => str_replace("\n", "\r\n", quoted_printable_encode(str_replace(["\r\n", "\r"], "\n", $body)));
+    // Base64 avoids malformed quoted-printable soft line breaks in webmail clients.
+    $encode = static fn(string $body): string => rtrim(chunk_split(base64_encode(str_replace(["\r\n", "\r"], "\n", $body)), 76, "\r\n"));
     return implode("\r\n", $headers) . "\r\n\r\n" . implode("\r\n", [
-        '--' . $boundary, 'Content-Type: text/plain; charset=UTF-8', 'Content-Transfer-Encoding: quoted-printable', '', $encode($text), '',
-        '--' . $boundary, 'Content-Type: text/html; charset=UTF-8', 'Content-Transfer-Encoding: quoted-printable', '', $encode($htmlBody), '', '--' . $boundary . '--',
+        '--' . $boundary, 'Content-Type: text/plain; charset=UTF-8', 'Content-Transfer-Encoding: base64', '', $encode($text), '',
+        '--' . $boundary, 'Content-Type: text/html; charset=UTF-8', 'Content-Transfer-Encoding: base64', '', $encode($htmlBody), '', '--' . $boundary . '--',
     ]);
 }
 function smtpSend(array $config, string $to, string $replyTo, string $subject, string $text, string $htmlBody): bool {
