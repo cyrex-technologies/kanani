@@ -68,10 +68,16 @@ function retryAfter(string $ip): int {
 }
 
 function smtpConfig(): array {
-    // For /home/account/public_html/contact-handler.php this resolves to /home/account.
-    $configFile = dirname(__DIR__, 2) . '/contact-form-config.php';
-    $config = is_file($configFile) ? require $configFile : [];
-    $config = is_array($config) ? $config : [];
+    // Supports both a domain at public_html and a subdomain at public_html/name.
+    // Keep the private config in the cPanel account home, outside the web root.
+    $config = [];
+    foreach ([dirname(__DIR__) . '/contact-form-config.php', dirname(__DIR__, 2) . '/contact-form-config.php'] as $configFile) {
+        if (is_file($configFile)) {
+            $loaded = require $configFile;
+            $config = is_array($loaded) ? $loaded : [];
+            break;
+        }
+    }
     foreach (['smtp_host', 'smtp_port', 'smtp_encryption', 'smtp_username', 'smtp_password', 'from_email', 'from_name', 'recipient_email'] as $key) {
         $env = getenv('CONTACT_' . strtoupper($key));
         if ($env !== false && $env !== '') $config[$key] = $env;
