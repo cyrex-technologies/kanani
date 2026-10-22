@@ -82,11 +82,15 @@ function smtpConfig(): array {
         $env = getenv('CONTACT_' . strtoupper($key));
         if ($env !== false && $env !== '') $config[$key] = $env;
     }
-    return array_merge([
+    $config = array_merge([
         'smtp_host' => '', 'smtp_port' => 465, 'smtp_encryption' => 'ssl', 'smtp_username' => '', 'smtp_password' => '',
         'from_email' => '', 'from_name' => 'Kanan Services Limited Website', 'recipient_email' => COMPANY_EMAIL,
         'instagram_url' => 'https://www.instagram.com/kanan.tz/',
     ], $config);
+    if (!is_string($config['instagram_url']) || trim($config['instagram_url']) === '') {
+        $config['instagram_url'] = 'https://www.instagram.com/kanan.tz/';
+    }
+    return $config;
 }
 
 function smtpRead($socket, array $codes): void {
